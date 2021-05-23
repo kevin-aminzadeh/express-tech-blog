@@ -1,0 +1,37 @@
+{
+  "name": "express-tech-blog",
+  "version": "1.0.0",
+  "description": "A simple CMS-style blogging application built with Express and Handlebars.",
+  "main": "server.js",
+  "scripts": {
+    "seed": "",
+    "dev": "concurrently \"npm:watch-*\"",
+    "start": "node server.js",
+    "watch-js": "nodemon -e js,handlebars server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevin-aminzadeh/express-tech-blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevin-aminzadeh/express-tech-blog"
+  },
+  "homepage": "https://github.com/kevin-aminzadeh/express-tech-blog#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.0",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.6.2"
+  },
+  "devDependencies": {
+    "concurrently": "^6.1.0",
+    "nodemon": "^2.0.7"
+  }
+}
