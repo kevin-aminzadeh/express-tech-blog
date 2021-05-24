@@ -20,7 +20,7 @@ Post.init(
       },
     },
     content: {
-      type: DataTypes.TEXT("long"),
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     user_id: {
