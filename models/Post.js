@@ -23,7 +23,7 @@ Post.init(
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    user_id: {
+    owner_id: {
       type: DataTypes.UUID,
       allowNull: false,
       references: {
