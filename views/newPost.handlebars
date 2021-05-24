@@ -1,0 +1,39 @@
+<div class="row mt-5">
+  <div class="col">
+    <h1>Write a Story</h1>
+  </div>
+  <div class="col text-end">
+    <button class="btn btn-success rounded-pill px-3 py-2">Publish</button>
+  </div>
+</div>
+
+<div class="row mt-4">
+
+  <form action="">
+    <div class="mb-3">
+      <label for="titleInput" class="form-label visually-hidden">Post Title</label>
+      <input
+        type="email"
+        class="form-control form-control-lg bg-transparent rounded-0 border-0"
+        id="titleInput"
+        placeholder="Title"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="content" class="form-label visually-hidden">Post Content</label>
+      <textarea
+        class="form-control form-control-lg bg-transparent rounded-0 border-0"
+        id="content"
+        placeholder="Tell your story..."
+        rows="3"
+      ></textarea>
+    </div>
+  </form>
+
+</div>
+<script
+  src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"
+></script>
+<script>
+  autosize(document.getElementById("content"));
+</script>
