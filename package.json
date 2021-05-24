@@ -4,7 +4,7 @@
   "description": "A simple CMS-style blogging application built with Express and Handlebars.",
   "main": "server.js",
   "scripts": {
-    "seed": "",
+    "seed": "node seeds/index.js",
     "dev": "concurrently \"npm:watch-*\"",
     "start": "node server.js",
     "watch-js": "nodemon -e js,handlebars server.js",
