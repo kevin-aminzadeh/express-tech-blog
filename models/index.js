@@ -4,35 +4,35 @@ const User = require("./user");
 
 // User and Post Model Relationships
 User.hasMany(Post, {
-  foreignKey: "id",
+  foreignKey: "owner_id",
   onDelete: "CASCADE",
 });
 
 Post.belongsTo(User, {
-  foreignKey: "id",
-  as: "owner_id",
+  foreignKey: "owner_id",
+  as: "owner",
 });
 
 // User and Comment Model Relationships
 User.hasMany(Comment, {
-  foreignKey: "id",
+  foreignKey: "owner_id",
   onDelete: "CASCADE",
 });
 
 Comment.belongsTo(User, {
-  foreignKey: "id",
-  as: "owner_id",
+  foreignKey: "owner_id",
+  as: "owner",
 });
 
 // Post and Comment Model Relationships
 Post.hasMany(Comment, {
-  foreignKey: "id",
+  foreignKey: "post_id",
   onDelete: "CASCADE",
 });
 
 Comment.belongsTo(Post, {
-  foreignKey: "id",
-  as: "post_id",
+  foreignKey: "post_id",
+  as: "parentPost",
 });
 
-module.exports = { Comment, Post, User };
+module.exports = { User, Post };
