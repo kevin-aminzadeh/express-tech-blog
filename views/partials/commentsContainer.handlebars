@@ -1,0 +1,31 @@
+{{! Comments }}
+<div class="row">
+  <div class="col">
+    <hr class="mt-1 mb-4" />
+  </div>
+</div>
+
+<form class="row">
+  <div class="col">
+    <input
+      class="form-control rounded-pill"
+      type="text"
+      placeholder="Write a comment..."
+      aria-label="Comment Input"
+    />
+  </div>
+
+  <div class="col-auto">
+    <button type="submit" class="btn btn-dark mb-3">Post</button>
+  </div>
+</form>
+
+<div class="row mt-2">
+  <div class="col px-4">
+    {{> comment}}
+    {{> comment}}
+    {{> comment}}
+
+
+  </div>
+</div>

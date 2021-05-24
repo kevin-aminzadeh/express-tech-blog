@@ -1,0 +1,62 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold" href="/" style="margin-left:1%;">Tech Blog</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarContent"
+        aria-controls="navbarContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav ms-auto px-3 py-2">
+          <li class="nav-item">
+            <a class="nav-link text-capitalize" href="/login">Home</a>
+          </li>
+          {{#if loggedIn}}
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Hello, User Name
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li><a
+                    class="dropdown-item"
+                    href="/dashboard"
+                  >Dashboard</a></li>
+                <li><a class="dropdown-item" href="/dashboard">Write a story</a></li>
+                <li><a class="dropdown-item" href="#">Sign Out</a></li>
+              </ul>
+            </li>
+          {{else}}
+            <li class="nav-item">
+              <a class="nav-link text-capitalize" href="/login">Sign in</a>
+            </li>
+            <li class="nav-item ms-3">
+              <a
+                class="nav-link text-capitalize btn btn-dark text-white rounded-pill px-3"
+                href="/register"
+              >Get Started</a>
+            </li>
+          {{/if}}
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
