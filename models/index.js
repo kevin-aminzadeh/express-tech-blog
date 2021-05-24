@@ -35,4 +35,4 @@ Comment.belongsTo(Post, {
   as: "parentPost",
 });
 
-module.exports = { User, Post };
+module.exports = { Comment, Post, User };
