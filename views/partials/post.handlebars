@@ -1,4 +1,4 @@
-<div class="container bg-white pb-1 px-3 shadow-sm mb-5">
+<div class="container bg-white pb-1 px-3 shadow-sm mb-5" data-id={{id}}>
   <div class="row">
     <div class="col pt-4">
       <h2 class="h5 fw-bold text-capitalize">{{title}}</h2>
@@ -13,8 +13,8 @@
           aria-expanded="false"
         ><span><i class="fas fa-ellipsis-h"></i></span></button>
         <ul class="dropdown-menu" aria-labelledby="commentDropdown">
-          <li><a class="dropdown-item" href="#">Edit</a></li>
-          <li><a class="dropdown-item" href="#">Delete</a></li>
+          <li><button class="dropdown-item" href="#">Edit</button></li>
+          <li><button class="dropdown-item" href="#">Delete</button></li>
 
         </ul>
       </div>
