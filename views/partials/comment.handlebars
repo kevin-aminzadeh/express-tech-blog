@@ -1,4 +1,4 @@
-<div class="px-2 row mt-3">
+<div class="px-2 row mt-3" data-id={{id}}>
   <div class="col-auto">
 
     <div class="row align-items-center">
@@ -17,8 +17,8 @@
               aria-expanded="false"
             ><span><i class="fas fa-ellipsis-h"></i></span></button>
             <ul class="dropdown-menu" aria-labelledby="commentDropdown">
-              <li><a class="dropdown-item" href="#">Edit</a></li>
-              <li><a class="dropdown-item" href="#">Delete</a></li>
+              <li><button class="dropdown-item" href="#">Edit</button></li>
+              <li><button class="dropdown-item" href="#">Delete</button></li>
 
             </ul>
           </div>
@@ -28,7 +28,7 @@
     </div>
     <div class="row justify-content-end">
       <div class="col-auto text-end text-muted">
-        <p><small>May 23, 2021</small></p>
+        <p><small>{{formatDate createdAt}}</small></p>
       </div>
     </div>
   </div>
