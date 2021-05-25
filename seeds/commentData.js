@@ -9,13 +9,15 @@ const commentData = [
   },
   {
     id: "5f9f93f3-206b-4766-9e8d-8873a873db49",
-    content: "This is great!",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi quae a, delectus, asperiores voluptatibus vitae sint fugit laboriosam suscipit recusandae reprehenderit illum voluptate aut? Doloribus sequi accusamus nihil magnam? Possimus?",
     owner_id: "45d6f1c7-c7b3-48d3-9c8c-645bf1c4653a",
     post_id: "05ea70a9-4f31-4e5b-9c8d-ae284d797c01",
   },
   {
     id: "248b4597-e982-4dcc-bf52-68fce6aee9bf",
-    content: "Very informative.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi quae a, delectus, asperiores voluptatibus vitae sint fugit laboriosam suscipit recusandae reprehenderit illum voluptate aut? Doloribus sequi accusamus nihil magnam? Possimus?",
     owner_id: "8f10d887-656c-427b-955a-e6fe69a43c0d",
     post_id: "d4c5fa6d-ae1f-45fe-85b6-f910f4a942f8",
   },
