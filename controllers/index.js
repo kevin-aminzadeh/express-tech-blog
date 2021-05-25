@@ -1,6 +1,6 @@
-const CommentController = require("./comment.controller");
-const PostController = require("./post.controller");
-const UserController = require("./user.controller");
+const CommentController = require("./commentController");
+const PostController = require("./postController");
+const UserController = require("./userController");
 
 module.exports = {
   CommentController,

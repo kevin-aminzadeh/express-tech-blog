@@ -1,4 +1,4 @@
-const PostService = require("../services/post.service");
+const PostService = require("../services/postService");
 
 // Create New Post
 exports.createPost = async (req, res, next) => {};
