@@ -4,7 +4,7 @@
     </div>
   </div>
   <div class="row mt-4">
-      {{> post}}
-      {{> post}}
-      {{> post}}
+  {{#each posts as |post|}}
+    {{> post userId=../userId post=postData }}
+  {{/each}}
   </div>

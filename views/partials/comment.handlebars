@@ -1,29 +1,30 @@
 <div class="px-2 row mt-3">
   <div class="col-auto">
+
     <div class="row align-items-center">
-      <div class="col rounded py-3 pe-4 bg-light ps-2">
-        <h6 class="mb-1 subheading"><small>Richard Hendricks</small></h6>
-        <p class="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Repudiandae, eveniet eaque voluptates provident inventore animi optio
-          quis nulla voluptas nam iure? Blanditiis accusamus saepe animi eos,
-          necessitatibus officia consectetur soluta.</p>
-      </div>
-      <div class="col">
-        <div class="dropdown">
-          <button
-            class="btn btn-outline-dark border-0 rounded-circle py-2"
-            id="commentDropdown"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          ><span><i class="fas fa-ellipsis-h"></i></span></button>
-          <ul class="dropdown-menu" aria-labelledby="commentDropdown">
-            <li><a class="dropdown-item" href="#">Edit</a></li>
-            <li><a class="dropdown-item" href="#">Delete</a></li>
+      <div class="col-auto rounded py-3 pe-4 bg-light ps-3">
+        <h6 class="mb-1 subheading"><small>@{{owner.username}}</small></h6>
+        <p class="mb-0">{{content}}</p>
 
-          </ul>
+      </div>
+      {{#if (when userId "eq" owner.id)}}
+        <div class="col">
+          <div class="dropdown">
+            <button
+              class="btn btn-outline-dark border-0 rounded-circle py-2"
+              id="commentDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            ><span><i class="fas fa-ellipsis-h"></i></span></button>
+            <ul class="dropdown-menu" aria-labelledby="commentDropdown">
+              <li><a class="dropdown-item" href="#">Edit</a></li>
+              <li><a class="dropdown-item" href="#">Delete</a></li>
+
+            </ul>
+          </div>
+
         </div>
-
-      </div>
+      {{/if}}
     </div>
     <div class="row justify-content-end">
       <div class="col-auto text-end text-muted">

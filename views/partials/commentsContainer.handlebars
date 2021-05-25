@@ -1,11 +1,10 @@
-{{! Comments }}
-<div class="d-none">
+<div class="">
   <div class="row">
     <div class="col">
       <hr class="mt-1 mb-4" />
     </div>
   </div>
-
+  
   <form class="row">
     <div class="col">
       <input
@@ -23,9 +22,9 @@
 
   <div class="row mt-2">
     <div class="col px-4">
-      {{> comment}}
-      {{> comment}}
-      {{> comment}}
+      {{#each comments as |comment|}}
+        {{> comment comment userId=../userId}}
+      {{/each}}
     </div>
   </div>
 </div>

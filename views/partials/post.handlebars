@@ -1,24 +1,38 @@
-<div class="container bg-white pt-4 pb-1 shadow-sm mb-5">
-  <div class="row py-2">
-    <div class="col">
-      <h2 class="h5 fw-bold text-capitalize">Why MVC is so important</h2>
-      <p class="subheading mb-0 align-middle text-muted fw-light">
-        <h3 class="h6 text-dark">Jane Doe</h3>
-        <small>May 23, 2021</small>
-        
-      </p>
+<div class="container bg-white pb-1 px-3 shadow-sm mb-5">
+  <div class="row">
+    <div class="col pt-4">
+      <h2 class="h5 fw-bold text-capitalize">{{title}}</h2>
     </div>
+     {{#if (when userId "eq" owner.id)}}
+    <div class="col pt-2 text-end">
+      <div class="dropdown">
+        <button
+          class="btn btn-link link-muted border-0 text-muted"
+          id="commentDropdown"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        ><span><i class="fas fa-ellipsis-h"></i></span></button>
+        <ul class="dropdown-menu" aria-labelledby="commentDropdown">
+          <li><a class="dropdown-item" href="#">Edit</a></li>
+          <li><a class="dropdown-item" href="#">Delete</a></li>
 
+        </ul>
+      </div>
+
+    </div>
+    {{/if}}
   </div>
   <div class="row">
     <div class="col">
-      <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Ducimus iure tenetur veniam sint provident porro minima itaque,
-        quae amet tempore reiciendis? Omnis ex veritatis atque nemo fuga impedit
-        libero suscipit? Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Ducimus iure tenetur veniam sint provident porro minima itaque,
-        quae amet tempore reiciendis? Omnis ex veritatis atque nemo fuga impedit
-        libero suscipit?</p>
+      <p class="subheading mb-0 align-middle text-muted fw-light">
+        <h3 class="h6 text-dark">@{{owner.username}}</h3>
+        <small>{{formatDate createdAt}}</small>
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <p class="text-muted">{{content}}</p>
     </div>
   </div>
   <div class="row">
@@ -65,6 +79,6 @@
       </button>
     </div>
   </div>
-  {{> commentsContainer}}
+  {{> commentsContainer comments=comments userId=userId}}
 
 </div>
