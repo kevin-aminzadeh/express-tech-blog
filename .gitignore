@@ -1,5 +1,2 @@
 node_modules
 .env
-controllers/userController.js
-routes/api/userRoutes.js
- services/userService.js
