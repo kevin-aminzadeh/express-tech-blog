@@ -29,12 +29,12 @@ exports.updateComment = async (commentData) => {
 };
 
 // Delete Comment Record
-exports.updateComment = async (commentId, ownerId) => {
+exports.deleteComment = async (commentId, userId) => {
   try {
     const res = await Comment.destroy({
       where: {
-        id: commentData.id,
-        owner_id: commentData.ownerId,
+        id: commentId,
+        owner_id: userId,
       },
     });
     return res;

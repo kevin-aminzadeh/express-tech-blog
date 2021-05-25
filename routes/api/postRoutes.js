@@ -1,6 +1,10 @@
 const router = require("express").Router();
 const { PostController } = require("../../controllers");
 
-router.post("/", async (req, res) => {});
+router.post("/", PostController.createPost);
+
+router.put("/", PostController.updatePost);
+
+router.delete("/:id", PostController.deletePost);
 
 module.exports = router;

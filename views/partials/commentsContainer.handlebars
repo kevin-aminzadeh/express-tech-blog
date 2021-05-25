@@ -5,7 +5,7 @@
     </div>
   </div>
   {{#if loggedIn}}
-    <form class="row">
+    <form class="row" data-id={{postId}}>
       <div class="col">
         <input
           class="form-control rounded-pill"
@@ -16,7 +16,7 @@
       </div>
 
       <div class="col-auto">
-        <button type="submit" class="btn btn-dark mb-3">Post</button>
+        <button type="submit" class="btn btn-dark mb-3 post-comment-btn">Post</button>
       </div>
     </form>
   {{/if}}

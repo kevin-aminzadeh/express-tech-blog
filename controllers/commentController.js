@@ -72,7 +72,7 @@ exports.deleteComment = async (req, res, next) => {
     // Delete Comment
     await CommentService.deleteComment(req.params.id, req.session.userId);
 
-    res.status(200).json("Comment Successfully Updated");
+    res.status(200).json("Comment Successfully Deleted");
   } catch (err) {
     res.status(400).json(err.toString());
   }

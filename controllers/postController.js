@@ -59,3 +59,24 @@ exports.updatePost = async (req, res, next) => {
 exports.deletePost = async (req, res, next) => {
   // Validate Request Parameters/Queries
 };
+
+exports.deletePost = async (req, res, next) => {
+  try {
+    // If User is Not Logged in, Reject Request
+    if (!req.session.loggedIn) {
+      throw Error("You Are Not Authorized To Perform This Action.");
+    }
+
+    // If Request Data is Invalid, Reject Request
+    if (!req.params.id || !req.session.userId) {
+      throw Error("Invalid Request Data.");
+    }
+
+    // Delete Post
+    await PostService.deletePost(req.params.id, req.session.userId);
+
+    res.status(200).json("Post Successfully Deleted");
+  } catch (err) {
+    res.status(400).json(err.toString());
+  }
+};

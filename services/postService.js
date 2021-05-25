@@ -42,3 +42,17 @@ exports.getAllPosts = async () => {
     throw err;
   }
 };
+
+exports.deletePost = async (postId, userId) => {
+  try {
+    const res = await Post.destroy({
+      where: {
+        id: postId,
+        owner_id: userId,
+      },
+    });
+    return res;
+  } catch (err) {
+    throw err;
+  }
+};
