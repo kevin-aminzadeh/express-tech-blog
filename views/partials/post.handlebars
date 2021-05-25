@@ -43,16 +43,31 @@
     <div class="col text-end">
       <div class="row">
         <div class="col">
-          <button
+          {{#if loggedIn}}
+            <button
             class="btn btn-link link-dark text-decoration-none border-0 align-middle"
-          >
+            >
             31 Likes
-          </button>
-          <button
-            class="btn btn-link link-dark text-decoration-none border-0 align-middle"
-          >
-            10 Comments
-          </button>
+            </button>
+            <button
+              class="btn btn-link link-dark text-decoration-none border-0 align-middle"
+            >
+              10 Comments
+            </button>
+          {{else}}
+              <a
+              class="btn btn-link link-dark text-decoration-none border-0 align-middle"
+              href="/login"
+              >
+                31 Likes
+              </a>
+              <a
+              class="btn btn-link link-dark text-decoration-none border-0 align-middle"
+              href="/login"
+              >
+                10 Comments
+              </a>
+          {{/if}}
         </div>
 
       </div>
@@ -67,18 +82,34 @@
   <div class="row justify-content-center align-content-center">
 
     <div class="col-5 text-center">
-      <button class="btn btn-outline-dark border-0 align-middle w-100">
-        <span class="far fa-thumbs-up me-1"></span>
-        <span>Like</span>
-      </button>
+      {{#if loggedIn}}
+        <button class="btn btn-outline-dark border-0 align-middle w-100">
+          <span class="far fa-thumbs-up me-1"></span>
+          <span>Like</span>
+        </button>
+      {{else}}
+        <a class="btn btn-outline-dark border-0 align-middle w-100" href="/login">
+          <span class="far fa-thumbs-up me-1"></span>
+          <span>Like</span>
+        </a>
+      {{/if}}
     </div>
     <div class="col-5 text-center">
-      <button class="btn btn-outline-dark border-0 align-middle w-100">
-        <span class="far fa-comment-alt me-1 align-middle"></span>
-        <span class="align-top">Comment</span>
-      </button>
+      {{#if loggedIn}}
+        <button class="btn btn-outline-dark border-0 align-middle w-100">
+          <span class="far fa-comment-alt me-1 align-middle"></span>
+          <span class="align-top">Comment</span>
+        </button>
+      {{else}}
+        <a class="btn btn-outline-dark border-0 align-middle w-100" href="/login">
+          <span class="far fa-comment-alt me-1 align-middle"></span>
+          <span class="align-top">Comment</span>
+        </a>
+      {{/if}}
+
     </div>
   </div>
-  {{> commentsContainer comments=comments userId=userId}}
+  
+  {{> commentsContainer comments=comments userId=userId loggedIn=loggedIn}}
 
 </div>
