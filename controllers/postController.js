@@ -7,7 +7,7 @@ exports.createPost = async (req, res, next) => {};
 exports.getAllPosts = async (req, res, next) => {
   try {
     const posts = await PostService.getAllPosts();
-    console.log(posts[0].comments);
+
     res.render("dashboard", {
       dashboardActive: true,
       loggedIn: req.session.loggedIn,
@@ -50,10 +50,6 @@ exports.renderDashboard = async (req, res, next) => {
   } catch (err) {
     return res.status(400).json({ status: 400, message: err.message });
   }
-};
-
-exports.getPost = async (req, res, next) => {
-  // Validate Request Parameters/Queries
 };
 
 exports.updatePost = async (req, res, next) => {
