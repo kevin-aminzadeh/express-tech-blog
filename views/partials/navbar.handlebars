@@ -17,12 +17,15 @@
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav ms-auto px-3 py-2">
           <li class="nav-item">
-            <a class="nav-link text-capitalize" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-capitalize" href="/dashboard">Dashboard</a>
+            <a class="nav-link text-capitalize {{#if homeActive}}active disabled{{/if}}" href="/" >Home</a>
           </li>
           {{#if loggedIn}}
+            <li class="nav-item">
+              <a
+                class="nav-link text-capitalize {{#if dashboardActive}}active disabled{{/if}}"
+                href="/dashboard"
+              >Dashboard</a>
+            </li>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -32,23 +35,21 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Hello, User Name
+                Hello,
+                {{username}}
               </a>
               <ul
                 class="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
-                <li><a
-                    class="dropdown-item"
-                    href="/dashboard"
-                  >Dashboard</a></li>
-                <li><a class="dropdown-item" href="/dashboard">Write a story</a></li>
-                <li><a class="dropdown-item" href="#">Sign Out</a></li>
+
+                <li><a class="dropdown-item" href="/new-post">Write a story</a></li>
+                <li><button class="dropdown-item" id="logoutBtn">Sign Out</button></li>
               </ul>
             </li>
           {{else}}
             <li class="nav-item">
-              <a class="nav-link text-capitalize" href="/login">Sign in</a>
+              <a class="nav-link text-capitalize {{#if signInActive}}active disabled{{/if}}" href="/login">Sign in</a>
             </li>
             <li class="nav-item ms-3">
               <a

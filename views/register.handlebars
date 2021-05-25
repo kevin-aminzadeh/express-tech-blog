@@ -13,12 +13,13 @@
           </div>
         </div>
         <div class="row mt-4 px-5">
-          <form>
+          <form id="registerForm">
             <div class="form-floating mb-3">
               <input
-                type="email"
+                type="text"
                 class="form-control border-top-0 border-start-0 border-end-0 border-bottom"
                 id="usernameInput"
+                name="username"
                 placeholder="@username"
               />
               <label for="usernameInput">Username</label>
@@ -28,6 +29,7 @@
                 type="email"
                 class="form-control border-top-0 border-start-0 border-end-0 border-bottom"
                 id="emailInput"
+                name="email"
                 placeholder="name@example.com"
               />
               <label for="emailInput">Email address</label>
@@ -37,6 +39,7 @@
                 type="password"
                 class="form-control border-top-0 border-start-0 border-end-0 border-bottom"
                 id="passwordInput"
+                name="password"
                 placeholder="Password"
               />
               <label for="passwordInput">Password</label>
@@ -64,3 +67,5 @@
   </div>
 
 </div>
+
+<script src="assets/js/register.js"></script>

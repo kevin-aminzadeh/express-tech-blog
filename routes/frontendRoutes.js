@@ -3,7 +3,11 @@ const router = require("express").Router();
 // Home Route
 router.get("/", (req, res) => {
   try {
-    res.render("home");
+    res.render("home", {
+      homeActive: true,
+      loggedIn: req.session.loggedIn,
+      username: req.session.username,
+    });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -12,7 +16,15 @@ router.get("/", (req, res) => {
 // Dashboard Route
 router.get("/dashboard", (req, res) => {
   try {
-    res.render("dashboard");
+    if (!req.session.loggedIn) {
+      res.redirect("/");
+      return;
+    }
+    res.render("dashboard", {
+      dashboardActive: true,
+      loggedIn: req.session.loggedIn,
+      username: req.session.username,
+    });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -21,7 +33,14 @@ router.get("/dashboard", (req, res) => {
 // Dashboard Route
 router.get("/new-post", (req, res) => {
   try {
-    res.render("newPost");
+    if (!req.session.loggedIn) {
+      res.redirect("/");
+      return;
+    }
+    res.render("newPost", {
+      loggedIn: req.session.loggedIn,
+      username: req.session.username,
+    });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -29,17 +48,17 @@ router.get("/new-post", (req, res) => {
 
 // Login Route
 router.get("/login", (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect("/");
     return;
   }
 
-  res.render("login");
+  res.render("login", { signInActive: true });
 });
 
 // Register Route
 router.get("/register", (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect("/");
     return;
   }
