@@ -1,35 +1,79 @@
 const CommentService = require("../services/commentService");
 
 // Create New Comment
-exports.createComment = async (req, res, next) => {};
-
-// Get All Comments
-exports.getComments = async (req, res, next) => {
-  // Validate Request Parameters/Queries
-
-  const page = req.params.page ? req.params.page : 1;
-  const limit = req.params.limit ? req.params.limit : 10;
-
+exports.createComment = async (req, res, next) => {
   try {
-    const comments = await CommentService.getComments({}, page, limit);
-    return res.status(200).json({
-      status: 200,
-      data: comments,
-      message: "Successfully Retrieved Comments.",
-    });
+    // If User is Not Logged in, Reject Request
+    if (!req.session.loggedIn) {
+      throw Error("You Must Be Logged In To Comment.");
+    }
+
+    // If Request Data is Invalid, Reject Request
+    if (!req.body.comment || !req.body.postId) {
+      throw Error("Invalid Request Data.");
+    }
+
+    // Create Comment Object
+    const comment = {
+      content: req.body.content,
+      owner_id: req.session.userId,
+      post_id: req.body.postId,
+    };
+
+    // Create Comment in DB
+    await CommentService.createComment(comment);
   } catch (err) {
-    return res.status(400).json({ status: 400, message: err.message });
+    res.status(400).json(err.toString());
   }
 };
 
-exports.getComment = async (req, res, next) => {
-  // Validate Request Parameters/Queries
-};
-
+// Edit Comment
 exports.updateComment = async (req, res, next) => {
-  // Validate Request Parameters/Queries
+  try {
+    // If User is Not Logged in, Reject Request
+    if (!req.session.loggedIn) {
+      throw Error("You Must Be Logged In To Comment.");
+    }
+
+    // If Request Data is Invalid, Reject Request
+    if (!req.body.comment || !req.body.postId) {
+      throw Error("Invalid Request Data.");
+    }
+
+    // Construct Comment Object
+    const comment = {
+      content: req.body.content,
+      owner_id: req.session.userId,
+      post_id: req.body.postId,
+    };
+
+    // Update Comment
+    await CommentService.updateComment(comment);
+
+    res.status(200).json("Comment Successfully Updated");
+  } catch (err) {
+    res.status(400).json(err.toString());
+  }
 };
 
+// Delete Comment
 exports.deleteComment = async (req, res, next) => {
-  // Validate Request Parameters/Queries
+  try {
+    // If User is Not Logged in, Reject Request
+    if (!req.session.loggedIn) {
+      throw Error("You Are Not Authorized To Perform This Action.");
+    }
+
+    // If Request Data is Invalid, Reject Request
+    if (!req.params.id || !req.session.userId) {
+      throw Error("Invalid Request Data.");
+    }
+
+    // Delete Comment
+    await CommentService.deleteComment(req.params.id, req.session.userId);
+
+    res.status(200).json("Comment Successfully Updated");
+  } catch (err) {
+    res.status(400).json(err.toString());
+  }
 };
