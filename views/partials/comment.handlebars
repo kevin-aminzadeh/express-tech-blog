@@ -17,8 +17,14 @@
               aria-expanded="false"
             ><span><i class="fas fa-ellipsis-h"></i></span></button>
             <ul class="dropdown-menu" aria-labelledby="commentDropdown">
-              <li><button class="dropdown-item" href="#">Edit</button></li>
-              <li><button class="dropdown-item" href="#">Delete</button></li>
+              <li><button
+                  class="dropdown-item comment-edit-btn"
+                  data-id={{id}}
+                >Edit</button></li>
+              <li><button
+                  class="dropdown-item post-edit-btn"
+                  data-id={{id}}
+                >Delete</button></li>
 
             </ul>
           </div>
