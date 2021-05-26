@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "seed": "node seeds/index.js",
+    "build": "webpack",
     "dev": "concurrently \"npm:watch-*\" \"webpack --watch \"",
     "start": "node server.js",
     "watch-js": "nodemon -e js,handlebars server.js",

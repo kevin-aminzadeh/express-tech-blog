@@ -38,7 +38,6 @@ exports.logIn = async (req, res, next) => {
 
     // Validate Request Data
     if (!req.body.email || !req.body.password) {
-      console.log(req.body);
       throw Error("Incorrect Email or Password, Please Try Again.");
     }
 
@@ -61,8 +60,6 @@ exports.logIn = async (req, res, next) => {
       res.status(200).json("Login Successful.");
     });
   } catch (err) {
-    console.log(req.body);
-    console.log(err);
     res.status(400).send(err.toString());
   }
 };

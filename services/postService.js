@@ -41,7 +41,6 @@ exports.getAllPosts = async () => {
 
     const posts = dbData.map((item) => item.get({ plain: true }));
 
-    console.log(posts);
     return posts;
   } catch (err) {
     throw err;

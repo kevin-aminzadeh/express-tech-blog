@@ -8,7 +8,6 @@ exports.createPost = async (req, res, next) => {
       throw Error("You Must Be Logged In To Post.");
     }
 
-    console.log(req.body);
     // If Request Data is Invalid, Reject Request
     if (!req.body.content || !req.body.title) {
       throw Error("Invalid Request Data.");
@@ -25,7 +24,6 @@ exports.createPost = async (req, res, next) => {
     await PostService.createPost(postData);
     res.status(200).json("Post Created Successfully.");
   } catch (err) {
-    console.log("catch block");
     res.status(400).json(err.toString());
   }
 };
@@ -99,7 +97,6 @@ exports.updatePost = async (req, res, next) => {
       ownerId: req.session.userId,
     };
 
-    console.log(post);
     // Update Comment
     await PostService.updatePost(post);
 

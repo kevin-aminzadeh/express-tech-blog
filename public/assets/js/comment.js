@@ -29,7 +29,7 @@ async function handleCommentUpdate(commentId, postId) {
 
   // Construct Post Data Object
   const commentData = { id: commentId, postId: postId, content: commentText };
-  console.log(commentData);
+
   // Update Post Record In DB
   const response = await API.updateItem("comment", commentData);
 
