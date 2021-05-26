@@ -1,5 +1,3 @@
-const Handlebars = require("handlebars");
-
 // Given a number, append its leading zeroes
 const appendLeadingZeroes = (num) => {
   if (num < 10) {
@@ -36,8 +34,14 @@ const when = (a, operator, b) => {
   }
 };
 
+// Return Number of Elements in Given Array
+const count = (arr) => {
+  return arr.length;
+};
+
 module.exports = {
   appendLeadingZeroes,
   formatDate,
   when,
+  count,
 };
