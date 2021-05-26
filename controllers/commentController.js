@@ -49,8 +49,6 @@ exports.updateComment = async (req, res, next) => {
       post_id: req.body.postId,
     };
 
-    console.log(comment);
-
     // Update Comment
     await CommentService.updateComment(comment);
 
