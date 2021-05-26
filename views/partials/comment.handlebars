@@ -1,15 +1,43 @@
 <div class="px-2 row mt-3" data-id={{id}}>
   <div class="col-auto">
-
     <div class="row align-items-center">
-      <div class="col-auto rounded py-3 pe-4 bg-light ps-3">
-        <h6 class="mb-1 subheading"><small>@{{owner.username}}</small></h6>
-        <p class="mb-0">{{content}}</p>
+      <div class="col rounded pt-3 pb-3 bg-light">
+        <div class="row mt-2">
+          <div class="col">
+            <h6 class="mb-3 subheading"><small>@{{owner.username}}</small></h6>
+          </div>
 
+        </div>
+
+        <textarea
+          class="form-control form-control-lg bg-transparent border-1 comment-text-area visually-hidden"
+          rows="3"
+          data-id={{id}}
+        >{{content}}</textarea>
+        <p class="comment-text" data-id={{id}}>{{content}}</p>
+        <div
+          class="row justify-content-end visually-hidden edit-comment-btn-group-wrapper"
+          data-id={{id}}
+        >
+          <div
+            class="col mb-2 mt-3 edit-comment-btn-group text-end"
+            data-id={{id}}
+          >
+            <button
+              class="btn btn-outline-dark cancel-comment-edit-btn"
+              data-id={{id}}
+            >Cancel</button>
+            <button
+              class="btn btn-success save-comment-edit-btn"
+              data-id={{id}}
+              data-postId={{postId}}
+            >Save</button>
+          </div>
+        </div>
       </div>
       {{#if (when userId "eq" owner.id)}}
-        <div class="col">
-          <div class="dropdown">
+        <div class="col-auto">
+          <div class="dropdown" data-id={{id}}>
             <button
               class="btn btn-outline-dark border-0 rounded-circle py-2"
               id="commentDropdown"
@@ -22,7 +50,7 @@
                   data-id={{id}}
                 >Edit</button></li>
               <li><button
-                  class="dropdown-item post-edit-btn"
+                  class="dropdown-item comment-delete-btn"
                   data-id={{id}}
                 >Delete</button></li>
 

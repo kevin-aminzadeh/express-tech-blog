@@ -1,23 +1,34 @@
-<div class="container bg-white pb-1 px-3 shadow-sm mb-5" data-id={{id}}>
-  <div class="row">
-    <div class="col pt-4">
-      <h2 class="h5 fw-bold text-capitalize">{{title}}</h2>
+<div class="container bg-white pb-1 px-3 shadow-sm mb-5" id="post-{{id}}">
+  <div class="row pt-3">
+    <div class="col pt-2">
+      {{#if (when userId "eq" owner.id)}}
+      <input type="text" class="form-control form-control-lg bg-transparent border-1 post-title-input visually-hidden mb-2" name="postTitleInput" data-id="{{id}}" value="{{title}}">
+      {{/if}}
+      <h2 class="h5 fw-bold text-capitalize post-title" data-id="{{id}}">{{title}}</h2>
     </div>
      {{#if (when userId "eq" owner.id)}}
     <div class="col pt-2 text-end">
-      <div class="dropdown">
-        <button
-          class="btn btn-link link-muted border-0 text-muted"
-          id="commentDropdown"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        ><span><i class="fas fa-ellipsis-h"></i></span></button>
-        <ul class="dropdown-menu" aria-labelledby="commentDropdown">
-          <li><button class="dropdown-item post-edit-btn" data-id={{id}}>Edit</button></li>
-          <li><button class="dropdown-item post-delete-btn" data-id={{id}}>Delete</button></li>
-
-        </ul>
+      <div class="row justify-content-end">
+        <div class="col-auto edit-btn-group visually-hidden" data-id={{id}}>
+          <button class="btn btn-outline-dark cancel-edit-btn" data-id={{id}}>Cancel</button>
+          <button class="btn btn-success save-edit-btn" data-id={{id}}>Save</button>
+        </div>
+        <div class="col-auto post-options-btn" data-id={{id}}>
+          <div class="dropdown">
+            <button
+              class="btn btn-link link-muted border-0 text-muted"
+              id="commentDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            ><span><i class="fas fa-ellipsis-h"></i></span></button>
+            <ul class="dropdown-menu" aria-labelledby="commentDropdown">
+              <li><button class="dropdown-item post-edit-btn" data-id={{id}}>Edit</button></li>
+              <li><button class="dropdown-item post-delete-btn" data-id={{id}}>Delete</button></li>
+            </ul>
+          </div>
+        </div>
       </div>
+
 
     </div>
     {{/if}}
@@ -32,7 +43,12 @@
   </div>
   <div class="row">
     <div class="col">
-      <p class="text-muted">{{content}}</p>
+      {{#if (when userId "eq" owner.id)}}
+      <textarea class="form-control form-control-lg bg-transparent border-1 post-content-text-area visually-hidden mb-3" rows="3" data-id={{id}}>{{content}}</textarea>
+      {{/if}}
+      <p class="text-muted post-content" data-id={{id}}>
+        {{content}}
+      </p>
     </div>
   </div>
   <div class="row">
@@ -45,27 +61,20 @@
         <div class="col">
           {{#if loggedIn}}
             <button
-            class="btn btn-link link-dark text-decoration-none border-0 align-middle"
+              class="btn btn-link link-dark text-decoration-none border-0 align-middle comment-count-btn"
+              data-id="{{id}}"
             >
-            31 Likes
-            </button>
-            <button
-              class="btn btn-link link-dark text-decoration-none border-0 align-middle"
-            >
-              10 Comments
+              {{#if (count comments)}}
+                {{count comments}} Comment{{#if (when (count comments) "grtThan" 1)}}s{{/if}}
+              {{/if}}
+              
             </button>
           {{else}}
               <a
               class="btn btn-link link-dark text-decoration-none border-0 align-middle"
               href="/login"
               >
-                31 Likes
-              </a>
-              <a
-              class="btn btn-link link-dark text-decoration-none border-0 align-middle"
-              href="/login"
-              >
-                10 Comments
+                {{count comments}} Comments
               </a>
           {{/if}}
         </div>
@@ -81,22 +90,10 @@
   </div>
   <div class="row justify-content-center align-content-center">
 
-    <div class="col-5 text-center">
+
+    <div class="col text-center">
       {{#if loggedIn}}
-        <button class="btn btn-outline-dark border-0 align-middle w-100">
-          <span class="far fa-thumbs-up me-1"></span>
-          <span>Like</span>
-        </button>
-      {{else}}
-        <a class="btn btn-outline-dark border-0 align-middle w-100" href="/login">
-          <span class="far fa-thumbs-up me-1"></span>
-          <span>Like</span>
-        </a>
-      {{/if}}
-    </div>
-    <div class="col-5 text-center">
-      {{#if loggedIn}}
-        <button class="btn btn-outline-dark border-0 align-middle w-100">
+        <button class="btn btn-outline-dark border-0 rounded-0 align-middle w-100 comment-btn" data-id="{{id}}">
           <span class="far fa-comment-alt me-1 align-middle"></span>
           <span class="align-top">Comment</span>
         </button>

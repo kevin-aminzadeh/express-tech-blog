@@ -1,22 +1,27 @@
-<div class="row mt-5">
-  <div class="col">
-    <h1>Write a Story</h1>
+<form id="newPostForm">
+  <div class="row mt-5">
+    <div class="col">
+      <h1>Write a Story</h1>
+    </div>
+    <div class="col text-end">
+      <button
+        class="btn btn-success rounded-pill px-3 py-2"
+        type="submit"
+        id="submitPost"
+      >Publish</button>
+    </div>
   </div>
-  <div class="col text-end">
-    <button class="btn btn-success rounded-pill px-3 py-2">Publish</button>
-  </div>
-</div>
 
-<div class="row mt-4">
+  <div class="row mt-4">
 
-  <form action="">
     <div class="mb-3">
       <label for="titleInput" class="form-label visually-hidden">Post Title</label>
       <input
-        type="email"
+        type="title"
         class="form-control form-control-lg bg-transparent rounded-0 border-0"
         id="titleInput"
         placeholder="Title"
+        name="title"
       />
     </div>
     <div class="mb-3">
@@ -24,13 +29,14 @@
       <textarea
         class="form-control form-control-lg bg-transparent rounded-0 border-0"
         id="content"
+        name="content"
         placeholder="Tell your story..."
         rows="3"
       ></textarea>
     </div>
-  </form>
 
-</div>
+  </div>
+</form>
 <script
   src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"
 ></script>

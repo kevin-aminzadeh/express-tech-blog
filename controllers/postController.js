@@ -1,7 +1,34 @@
 const PostService = require("../services/postService");
 
 // Create New Post
-exports.createPost = async (req, res, next) => {};
+exports.createPost = async (req, res, next) => {
+  try {
+    // If User is Not Logged in, Reject Request
+    if (!req.session.loggedIn) {
+      throw Error("You Must Be Logged In To Post.");
+    }
+
+    console.log(req.body);
+    // If Request Data is Invalid, Reject Request
+    if (!req.body.content || !req.body.title) {
+      throw Error("Invalid Request Data.");
+    }
+
+    // Create Comment Object
+    const postData = {
+      title: req.body.title,
+      content: req.body.content,
+      owner_id: req.session.userId,
+    };
+
+    // Create Comment in DB
+    await PostService.createPost(postData);
+    res.status(200).json("Post Created Successfully.");
+  } catch (err) {
+    console.log("catch block");
+    res.status(400).json(err.toString());
+  }
+};
 
 // Get All Posts
 exports.getAllPosts = async (req, res, next) => {
@@ -53,7 +80,33 @@ exports.renderDashboard = async (req, res, next) => {
 };
 
 exports.updatePost = async (req, res, next) => {
-  // Validate Request Parameters/Queries
+  try {
+    // If User is Not Logged in, Reject Request
+    if (!req.session.loggedIn) {
+      throw Error("You Must Be Logged In To Comment.");
+    }
+
+    // If Request Data is Invalid, Reject Request
+    if (!req.body.title || !req.body.id || !req.body.content) {
+      throw Error("Invalid Request Data.");
+    }
+
+    // Construct Comment Object
+    const post = {
+      id: req.body.id,
+      title: req.body.title,
+      content: req.body.content,
+      ownerId: req.session.userId,
+    };
+
+    console.log(post);
+    // Update Comment
+    await PostService.updatePost(post);
+
+    res.status(200).json("Comment Successfully Updated");
+  } catch (err) {
+    res.status(400).json(err.toString());
+  }
 };
 
 exports.deletePost = async (req, res, next) => {

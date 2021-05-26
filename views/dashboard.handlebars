@@ -9,7 +9,10 @@
 
 <div class="row mt-4">
   {{#each posts as |post|}}
-    {{> post userId=../userId post=postData }}
+    {{#if (when owner.id "eq" ../userId)}}
+      {{> post userId=../userId loggedIn=../loggedIn post=post }}
+    {{/if}}
+    
   {{/each}}
 
 </div>

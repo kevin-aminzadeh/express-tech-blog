@@ -1,15 +1,16 @@
-<div class="">
+<div class="comments-container visually-hidden" id="comments-container-{{postId}}" data-id={{postId}}>
   <div class="row">
     <div class="col">
       <hr class="mt-1 mb-4" />
     </div>
   </div>
   {{#if loggedIn}}
-    <form class="row" data-id={{postId}}>
+    <form class="row comment-form" data-id={{postId}}>
       <div class="col">
         <input
           class="form-control rounded-pill"
           type="text"
+          name="commentInput"
           placeholder="Write a comment..."
           aria-label="Comment Input"
         />
@@ -24,7 +25,7 @@
   <div class="row mt-2">
     <div class="col px-4">
       {{#each comments as |comment|}}
-        {{> comment comment userId=../userId}}
+        {{> comment comment userId=../userId postId=../postId}}
       {{/each}}
     </div>
   </div>

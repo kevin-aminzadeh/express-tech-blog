@@ -24,8 +24,13 @@
 
 </body>
 {{#if loggedIn}}
-<script src="assets/js/post.js"></script>
-<script src="assets/js/comment.js"></script>
+<script src="dist/bundle.js"></script>
 <script src="assets/js/logout.js"></script>
+<script
+  src="https://rawgit.com/jackmoore/autosize/master/dist/autosize.min.js"
+></script>
+{{else}}
+<script src="assets/js/login.js"></script>
+<script src="assets/js/register.js"></script>
 {{/if}}
 </html>

@@ -9,7 +9,7 @@ exports.createComment = async (req, res, next) => {
     }
 
     // If Request Data is Invalid, Reject Request
-    if (!req.body.comment || !req.body.postId) {
+    if (!req.body.content || !req.body.postId) {
       throw Error("Invalid Request Data.");
     }
 
@@ -22,6 +22,7 @@ exports.createComment = async (req, res, next) => {
 
     // Create Comment in DB
     await CommentService.createComment(comment);
+    res.status(200).json("Comment Created Successfully.");
   } catch (err) {
     res.status(400).json(err.toString());
   }
@@ -36,16 +37,19 @@ exports.updateComment = async (req, res, next) => {
     }
 
     // If Request Data is Invalid, Reject Request
-    if (!req.body.comment || !req.body.postId) {
+    if (!req.body.content || !req.body.postId || !req.body.id) {
       throw Error("Invalid Request Data.");
     }
 
     // Construct Comment Object
     const comment = {
+      id: req.body.id,
       content: req.body.content,
       owner_id: req.session.userId,
       post_id: req.body.postId,
     };
+
+    console.log(comment);
 
     // Update Comment
     await CommentService.updateComment(comment);

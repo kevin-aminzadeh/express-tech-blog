@@ -1,11 +1,11 @@
 const { Post, User, Comment } = require("../models/index");
 
-exports.createPost = async (userData) => {
+// Create New Post in DB
+exports.createPost = async (postData) => {
   try {
-    const dbData = await User.create(userData);
+    const dbData = await Post.create(postData);
 
-    const posts = dbData.map((item) => item.get({ plain: true }));
-    return posts;
+    return dbData;
   } catch (err) {
     throw err;
   }
@@ -15,6 +15,10 @@ exports.getAllPosts = async () => {
   try {
     const dbData = await Post.findAll({
       attributes: ["id", "title", "content", "createdAt"],
+      order: [
+        ["createdAt", "desc"],
+        [Comment, "createdAt", "DESC"],
+      ],
       include: [
         {
           model: User,
@@ -36,8 +40,26 @@ exports.getAllPosts = async () => {
     });
 
     const posts = dbData.map((item) => item.get({ plain: true }));
-    console.log(posts[0].comments);
+
+    console.log(posts);
     return posts;
+  } catch (err) {
+    throw err;
+  }
+};
+
+exports.updatePost = async (postData) => {
+  try {
+    const res = await Post.update(
+      { title: postData.title, content: postData.content },
+      {
+        where: {
+          id: postData.id,
+          owner_id: postData.ownerId,
+        },
+      }
+    );
+    return res;
   } catch (err) {
     throw err;
   }

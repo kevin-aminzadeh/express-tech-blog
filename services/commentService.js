@@ -18,7 +18,6 @@ exports.updateComment = async (commentData) => {
       {
         where: {
           id: commentData.id,
-          owner_id: commentData.ownerId,
         },
       }
     );
