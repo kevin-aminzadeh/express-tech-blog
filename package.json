@@ -19,6 +19,11 @@
   "bugs": {
     "url": "https://github.com/kevin-aminzadeh/express-tech-blog"
   },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
   "homepage": "https://github.com/kevin-aminzadeh/express-tech-blog#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -32,6 +37,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
+    "@babel/plugin-transform-runtime": "^7.14.3",
     "@babel/preset-env": "^7.14.2",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.2",
