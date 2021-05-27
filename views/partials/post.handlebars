@@ -74,7 +74,9 @@
               class="btn btn-link link-dark text-decoration-none border-0 align-middle"
               href="/login"
               >
-                {{count comments}} Comments
+                {{#if (count comments)}}
+                {{count comments}} Comment{{#if (when (count comments) "grtThan" 1)}}s{{/if}}
+              {{/if}}
               </a>
           {{/if}}
         </div>
